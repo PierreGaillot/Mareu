@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MeetItemListFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingHorizontal="12dp">
+
+
+                <ImageView
+                    android:id="@+id/fragmentMeetItemListImgViewMeet"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginEnd="12dp" />
+
+
+                <TextView
+                    android:id="@+id/fragmentMeetItemListTextViewMeetName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/fragmentMeetItemListImgViewMeet"
+                    android:layout_toEndOf="@+id/fragmentMeetItemListImgViewMeet"
+                    android:text="Reunion A - 14h"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/fragmentMeetItemListTextViewEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fragmentMeetItemListTextViewMeetName"
+                    android:layout_toEndOf="@+id/fragmentMeetItemListImgViewMeet"
+                    android:text="pr.gaillot@gmail.com" />
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="none"
+                    android:src="@drawable/ic_baseline_delete_24" />
+
+
+
+        </RelativeLayout>
+
+</FrameLayout>
