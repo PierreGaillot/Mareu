@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="roomNames">
+        <item>Salle 1</item>
+        <item>Salle 2</item>
+        <item>Salle 3</item>
+        <item>Salle 4</item>
+        <item>Salle 5</item>
+        <item>Salle 6</item>
+        <item>Salle 7</item>
+        <item>Salle 8</item>
+        <item>Salle 9</item>
+        <item>Salle 10</item>
+        <item>Salle 11</item>
+        <item>Salle 12</item>
+    </string-array>
+</resources>

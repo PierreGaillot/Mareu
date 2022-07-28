@@ -1,64 +1,57 @@
 package com.gayo.mareu;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MeetItemListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.gayo.mareu.DI.DI;
+import com.gayo.mareu.model.Meet;
+import com.gayo.mareu.service.DummyMeetGenerator;
+import com.gayo.mareu.service.MeetApiService;
+
+import java.util.List;
+
 public class MeetItemListFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private MeetApiService mMeetApiService;
+    private List<Meet> mMeets;
+    private RecyclerView mRecyclerView;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public MeetItemListFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MeetItemListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MeetItemListFragment newInstance(String param1, String param2) {
+    public static MeetItemListFragment newInstance() {
         MeetItemListFragment fragment = new MeetItemListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        mMeetApiService = DI.getMeetApiService();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_meet_item_list,container, false);
+        Context context = view.getContext();
+        mRecyclerView = (RecyclerView) view;
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meet_item_list, container, false);
+        return view;
+    }
+
+
+    private void initList(){
+        mMeets = DummyMeetGenerator.DUMMY_MEET;
+        mRecyclerView.setAdapter(new MyMeetRecyclerViewAdapter(mMeets));
     }
 }
